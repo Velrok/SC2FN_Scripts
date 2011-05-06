@@ -1,0 +1,10 @@
+<?php
+
+$debug = true;
+
+# directory path relative to server root
+# example: for www.myserver.net/foo/scripts/index.html
+# this should be ./foo/scripts/
+$base_path = '/SC2FN_Scripts/report_result/';
+
+$lib_paths = array("./lib/", './lib/phpsc2replay-1.40/', './secure/');

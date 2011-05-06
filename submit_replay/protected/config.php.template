@@ -1,0 +1,22 @@
+<?php
+
+$mail_username  = "user";
+$mail_password  = "password";
+$mail_server    = "smtp.googlemail.com";
+
+$from = "from mail";
+$recipient = 'to mail'; # mail adresses to send the replays to 
+$subject_prefix = "[Replay]Spielergebnis: ";
+$message_postfix = "gl hf"; # will be added to each email body
+$replay_prefix = "SC2FN_S002_1v1_";
+
+$debug = true;
+
+# directory path relative to server root
+# example: for www.myserver.net/foo/scripts/index.html
+# this should be ./foo/scripts/
+$base_path = './'; 
+
+
+# rel path to the directory that contains Zend
+$lib_paths = array($base_path . "libs/", $base_path . 'libs/phpsc2replay/');

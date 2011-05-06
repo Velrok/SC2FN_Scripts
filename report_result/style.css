@@ -1,0 +1,58 @@
+.game_box{
+	float:none;
+}
+
+.clear{
+	clear:both;
+}
+
+.game_box h2 {
+
+}
+
+.gamer_box{
+	background-color:black;
+	width:25em;
+	border-width: 0.3em;
+	border-style: solid;
+	float:left;
+}
+
+.gamer_box.winner{
+	border-color:green;
+}
+
+.gamer_box.looser{
+	border-color:red;
+}
+
+
+.gamer_box h3 {
+	color: white;
+	font-size:1em;
+}
+
+
+.filler{
+	width:40em;
+	border-width: 1px;
+	border-color:white;
+	border-style: solid;
+	float:left;
+}
+
+.race_icon{
+	float:left;
+	height:3em;
+}
+
+
+.map_image{
+	height:7em;
+	float:left;
+	
+	border-width: 0.3em;
+	border-color:blue;
+	border-style: solid;
+	
+}

@@ -1,0 +1,18 @@
+<?php include("header.template") ?>
+
+	<h1>Ergebnis eintragen</h1>
+	<p>
+		Um ein Ergebnis einzutragen lade bitte die Replays von <strong>beiden</strong> Spielen hoch.
+	</p>
+	
+	<form id="dataForm" enctype="multipart/form-data" action="./check_report.phtml">
+		<div id="replays">
+        <h2>Replays</h2>
+        Spiel 01 <input type="file" name="replay01" class="file"/><br>
+        Spiel 02 <input type="file" name="replay02" class="file"/> 
+    </div>
+		<br>
+		<input type="submit">
+	</form>
+
+<?php include("footer.template") ?>

@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="de">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Map Chooser</title>
+	
+	<style type="text/css" media="screen">
+		.maps{
+			float:left;
+		}
+		
+		.map{
+			float:inherit;
+			margin-left: 5px;
+		}
+		
+		.clear{
+			clear:both;
+		}
+		
+		#log li{
+			float:left;
+			margin-left:2.1em;
+		}
+		
+		
+	</style>
+	
+	<script src="./jquery-1.5.min.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		
+		$(document).ready(function(){
+			$('.map').addClass('unpicked')
+		})
+		
+		function reset(){
+			$('.map').css('display', 'none')
+		}
+		
+		// source: http://www.naden.de/blog/zufallszahlen-in-javascript-mit-mathrandom
+		function get_random( min, max ) {
+			if( min > max ) {
+				return( -1 );
+			}
+			if( min == max ) {
+				return( min );
+			}
+
+		        return( min + parseInt( Math.random() * ( max-min+1 ) ) );
+		}
+		
+		function choose(){
+			maps = $('.unpicked')
+			size = maps.size()
+			
+			if (size == 0){
+				alert('Jede Map wurde mindestens ein mal ausgewählt.');
+				return
+			}
+			
+			random = get_random(0, size-1)
+
+			map = $(maps[random])
+			map.removeClass('unpicked')
+			map.css('display', 'block')
+			
+			map_name = $(map.find('h2')).html()
+			
+			$('#log').append("<li>"+map_name+"</li>")
+		}
+	</script>
+	
+</head>
+<body>
+	
+
+<p>
+	<input type="button" value="wählen" onclick="reset();choose()"/>
+</p>
+
+<div>
+	<ol id="log">	
+	</ol>
+</div>
+
+<div class="clear"/>
+
+	
+<div class="maps">
+	<?php
+		$maps = array(
+				'Metalopolis' 		=> '/tmp/02/379_Metalopolis-300x300.jpg',
+				'Terminus RE' 		=> '/tmp/02/422_Terminus-RE-300x300.jpg',
+				'Crossfire SE' 		=> '/tmp/02/421_Crossfire-SE-300x300.jpg',
+				'Lost Temple' 		=> '/tmp/02/381_Lost-Temple-SC2-300x300.jpg',
+				'Jungle Basin' 		=> '/tmp/02/400_Jungle-Basin.jpeg',
+				'Steppes of War' 	=> '/tmp/02/385_Steppes-of-War-300x300.jpg',
+				'Desert Oasis' 		=> '/tmp/02/384_Desert-Oasis-300x300.jpg',
+			);
+	
+	?>
+	
+	<?php foreach ($maps as $name => $link):?>
+	
+	<div class="map">
+		<h2><?= $name ?></h2>
+		<a href="<?= $link ?>"><img src="<?= $link ?>"  width="400px"/></a>
+	</div>
+	<?php endforeach; ?>
+</div>
+
+</body>
+</html>

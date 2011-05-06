@@ -1,0 +1,16 @@
+<html>
+    <head>
+    <title>Submit Replay</title>
+    
+    <link rel="stylesheet" type="text/css" href="<?php echo link_to('style.css'); ?>"> </link>
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js">
+    </script>
+    
+    <script type="text/javascript" src="<?php echo link_to('functions.js'); ?>"></script>
+        
+    </head>
+
+
+    <body>
+    

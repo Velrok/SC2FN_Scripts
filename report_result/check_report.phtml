@@ -1,0 +1,60 @@
+<?php include("header.template") ?>
+
+<?php
+
+	$player_a="Nesurion";
+	$player_a_race="Protoss";
+	
+	$player_b="Gimicky";
+	$player_b_race="Terran";
+	
+	$map_name="Python Peeks";
+	$map_image="http://meinsinn.de/liga/blog/wp-content/uploads/2011/03/starcraftmaps004_17118.jpeg";
+	
+	$games = new Array();
+	
+	$games[] = new OneVsOneGame("./replays/SC2FN_S002_1v1_Nesurion_vs_Fricked_Game01.SC2Replay");
+	$games[] = new OneVsOneGame("./replays/SC2FN_S002_1v1_Nesurion_vs_Fricked_Game02.SC2Replay");
+
+?>
+
+	<h1>Ergebnis prüfen</h1>
+	
+	<p>
+		Bitte überprüfe ob du die richtigen Replays hochgeladen hast indem du 
+		<strong>Spielernamen</strong>, <strong>Map</strong> und <strong>Gewinner</strong>
+		überprüfst.
+	</p>
+	
+	<?php for($games as $game): ?>
+	<div class="game_box">
+		<h3 class="map_name"><?= $game->getMap()->getName(); ?></h3>
+		<img class="map_image" src="<?= $game->getMap()->getImagePath(); ?>">
+		
+		<?php
+		$players = $game->getPlayers();
+		$player_a = $players[0];
+		$player_b = $players[1];
+		?>
+		
+		<div class="gamer_box gamer_a <?= if($player_a->isWinner(): echo 'winner') ?>">
+			<img class="race_icon" src='<?= link_to("images/{$player_a->getRaseFullName()}_Icon.jpg") ?>'/>
+			<h3 class="gamer_name"><?= $player_a->getName() ?></h3>
+		</div>
+		
+		<div class="filler"></div>
+		
+		<div class="gamer_box gamer_b <?= if($player_b->isWinner(): echo 'winner') ?>">
+			<img class="race_icon" src='<?= link_to("images/{$player_b->getRaseFullName()}_Icon.jpg") ?>'/>
+			<h3 class="gamer_name"><?= $player_b->getName() ?></h3>
+		</div>
+		
+	</div>
+	<div class="clear"></div>
+	<?php endfor; ?>
+	
+	<input class="cancle" type="button" value="Äh Moment das ist falsch!">
+	<input class="ok" type="submit" value="Stimmt alles.">
+
+
+<?php include("footer.template") ?>

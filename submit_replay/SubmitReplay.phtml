@@ -1,0 +1,91 @@
+<?php require_once("setup.php"); ?>
+
+<?php include("header.template") ?>
+
+<?php
+echo "test";
+require_once('mpqfile.php');
+require_once('sc2replay.php');
+
+$mpq = new MPQFile('./rep.SC2Replay');
+$replay = new SC2Replay();
+$replay->parseReplay($mpq);
+
+echo "<pre>";
+echo "Debug\n";
+
+$players = $replay->getPlayers();
+//foreach($players as $player){
+	foreach($players[1] as $attr => $val){
+			echo "$attr => $val\n";
+	}
+	//echo "\n";
+//}
+//var_dump($players);
+
+//	foreach($replay as $var => $val){
+//		echo "$var";
+//	}
+
+echo "</pre>";
+?>
+
+		<p>
+			<h1>Game 01</h1>
+			<div class="gamedata">
+				<ul>
+					<li></li>
+				</ul>
+			</div>
+			<div id="#team1">
+				
+			</div>
+			<div id="#team2"></div>
+		</p>
+
+    <?php if($debug): ?>
+    <h2>Debug</h2>
+    <p>
+    <?php echo $debug_string; ?>
+    </p>
+    <?php endif; ?>
+    
+    <h1>Submit Replay</h1>
+    
+    <form id="dataForm" enctype="multipart/form-data" action="./ProcessReplaySubmission.php" method="POST">
+        <div id="players">
+            <h2>Spieler</h2>
+            Spieler A: <input class="playerName" type="text" name="playerA" onchange="update_playername('playerA', $(this).val())"/> <br/>
+            Spieler B: <input id="playerB_name" class="playerName" type="text" name="playerB"/ onchange="update_playername('playerB', $(this).val())"> <br/>
+        </div>
+        
+        <div id="replays">
+            <h2>Replays</h2>
+            
+            Spiel 01 <input type="file" name="replay01" class="file"/> 
+            
+            Gewinner:
+            <select name="Game1Winner" onblur="validate()">
+                <option>-- bitte auswählen --</option>
+                <option class="playerA">Spieler A</option>
+                <option class="playerB">Spieler B</option>
+            </select>
+            <br/>
+            
+            
+            
+            Spiel 02 <input type="file" name="replay02" class="file"/> 
+            
+            Gewinner:
+            <select name="Game2Winner" onblur="validate()">
+                <option>-- bitte auswählen --</option>
+                <option class="playerA">Spieler A</option>
+                <option class="playerB">Spieler B</option>
+            </select><br/>
+        </div>
+        
+        <br/>
+        <input id="submitButton" type="submit" value="senden" onclick="return send()"/>
+    </form>
+    
+<?php include("footer.template") ?>

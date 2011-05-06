@@ -1,0 +1,14 @@
+<?php require_once("./secure/setup.php") ?>
+<html>
+    <head>
+    <title>Report Replay</title>
+    
+    <link rel="stylesheet" type="text/css" href="<?php echo link_to('style.css'); ?>"> </link>
+    
+    <script type="text/javascript" src="<?php echo link_to('js/jquery-1.5.min.js'); ?>"></script>
+        
+    </head>
+
+
+    <body>
+    
