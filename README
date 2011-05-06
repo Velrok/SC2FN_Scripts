@@ -21,3 +21,8 @@ There are currently 3 scripts available:
  * one has to name the players and the winner for each game
  * the script renames the files and sends as an attachement to a email adress
  * we use a mailing list for this, so everyone gets the replays named the same
+
+
+* report result
+ * isn't working yet
+ * it will read the meta data of 2 uploaded replays and use it to keep track of the wins and looses of the players. The goal is to keep track of the league points system.
