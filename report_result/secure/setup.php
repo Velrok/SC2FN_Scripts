@@ -1,10 +1,12 @@
 <?php
-
-require_once('./secure/config.php');
-
 // setting up the include path
 $inc_path = get_include_path();
 set_include_path($inc_path . PATH_SEPARATOR . implode($lib_paths, PATH_SEPARATOR) );
+
+// includes
+require_once('./secure/config.php');
+require_once('./phpsc2replay-1.40/mpqfile.php');
+require_once('./phpsc2replay-1.40/sc2replay.php');
 
 
 /*
@@ -48,6 +50,10 @@ class Replay{
 		}
 	}
 	
+	public function teams(){
+		
+	}
+	
 }
 
 class Game{
@@ -56,11 +62,11 @@ class Game{
 
 class OneVsOneGame extends Game {
 	
-	$replay;
-	$players;
+	protected $replay;
+	protected $players;
 	
 	public function __construct ($filename) {
-		$this->players = new Array(2);
+		$this->players = new ArrayObject();
 		
 		$this->replay = new Replay($filename);
 		
